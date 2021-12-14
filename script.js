@@ -1,69 +1,68 @@
-const gameBtn = document.querySelectorAll('input');
+const gameBtn = document.querySelectorAll('input')
+const results = document.getElementById('results');
 const pScore = document.getElementById('playerScore');
 const cScore = document.getElementById('computerScore');
+const restartGameBtn = document.getElementById('restartGame');
 
+function gameEnd() {
+    gameBtn.forEach(elem => {
+        elem.disabled = true
+    })
+}
 
-
-let playerScore = 0;
-let computerScore = 0;
-
-
-
-
-
-
-//Plays single round of RPS
 function playRound(playerSelection) {
-    let computerSelection = computerPlay(); 
-    let result = '';
+    let computerSelection = computerPlay();
+    if (playerSelection === 'rock' && computerSelection === 'scissors' ||
+        playerSelection === 'scissors' && computerSelection === 'paper' ||
+        playerSelection === 'paper' && computerSelection === 'rock') {
+            
+            results.innerHTML = `<h3>${playerSelection} beats ${computerSelection}!</h3>`
+            playerScore.innerHTML++
 
-    if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
-     (playerSelection == 'paper' && computerSelection == 'rock') ||
-     (playerSelection == 'scissors' && computerSelection == 'paper')) {
-        playerScore += 1
-        result = (playerSelection + ' beats ' + computerSelection + '!' + ' You won! ' + "<br><br> Player score: " + playerScore + "<br> Computer score: " + computerScore);
-
-        if (playerScore == 5) {
-            result += '<br><br>You won the game! Reload the page to play again'
-        }
-    }
-
-    else if (playerSelection == computerSelection) {
-        result = (' It\'s a tie! ' + ' You both chose ' + playerSelection + "<br><br> Player score: " + playerScore + "<br> Computer score: " + computerScore)
-    }
+            if (pScore.innerHTML == 5) {
+                alert('You win! :D');
+                gameEnd();
+            }
     
-    else {
-        computerScore += 1
-        result = (computerSelection + ' beats ' + playerSelection + '!' + ' You lose! ' + "<br><br> Player score: " + playerScore + "<br> Computer score: " + computerScore);
+    } else if (playerSelection === 'scissors' && computerSelection === 'rock' ||
+    playerSelection === 'rock' && computerSelection === 'paper' ||
+    playerSelection === 'paper' && computerSelection === 'scissors') {
+        
+        results.innerHTML = `<h3>${computerSelection} beats ${playerSelection}!</h3>`
+        computerScore.innerHTML++
 
-        if (computerScore == 5) {
-            result += '<br><br>The computer won the game! Reload the page to play again'
+
+        if (cScore.innerHTML == 5) {
+            alert('You lose! :(');
+            gameEnd();
         }
+        
+    } else {
+        results.innerHTML = `<h3>${playerSelection} and ${computerSelection} are the same! You tie!</h3>`
     }
 
 
-
-    document.getElementById('results').innerHTML = result
-    return
-    
 }
 
 
-// Pick random word (Rock, Paper, Scissors)
 function computerPlay() {
-    let gameArray = ['rock', 'paper', 'scissors'];
-    return gameArray[Math.floor(Math.random() * gameArray.length)];
+    let computerOptions = ['rock', 'paper', 'scissors'];
+    return computerOptions[Math.floor(Math.random() * computerOptions.length)];
 }
 
 
-gameBtn.forEach(button => {
+
+restartGameBtn.addEventListener('click', function() {
+    location.reload();
+    return false;
+})
+
+
+gameBtn.forEach(button =>{
     button.addEventListener('click', function(){
         playRound(button.value)
-    });
-});
-
-
-
+    })
+})
 
 
 
