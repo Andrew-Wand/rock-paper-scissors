@@ -7,16 +7,16 @@ const restartGameBtn = document.getElementById('restartGame');
 function gameEnd() {
     gameBtn.forEach(elem => {
         elem.disabled = true
-    })
+    });
 }
 
 function playRound(playerSelection) {
     let computerSelection = computerPlay();
-    if (playerSelection === 'rock' && computerSelection === 'scissors' ||
-        playerSelection === 'scissors' && computerSelection === 'paper' ||
-        playerSelection === 'paper' && computerSelection === 'rock') {
+    if (playerSelection === 'Rock' && computerSelection === 'Scissors' ||
+        playerSelection === 'Scissors' && computerSelection === 'Paper' ||
+        playerSelection === 'Paper' && computerSelection === 'Rock') {
             
-            results.innerHTML = `<h3>${playerSelection} beats ${computerSelection}!</h3>`
+            results.innerHTML = `<h3 style="color:#0DCEDA">${playerSelection}&nbsp</h3><h3> beats</h3> <h3 style="color:#F73859">&nbsp${computerSelection}!</h3?>`
             playerScore.innerHTML++
 
             if (pScore.innerHTML == 5) {
@@ -24,11 +24,11 @@ function playRound(playerSelection) {
                 gameEnd();
             }
     
-    } else if (playerSelection === 'scissors' && computerSelection === 'rock' ||
-    playerSelection === 'rock' && computerSelection === 'paper' ||
-    playerSelection === 'paper' && computerSelection === 'scissors') {
+    } else if (playerSelection === 'Scissors' && computerSelection === 'Rock' ||
+    playerSelection === 'Rock' && computerSelection === 'Paper' ||
+    playerSelection === 'Paper' && computerSelection === 'Scissors') {
         
-        results.innerHTML = `<h3>${computerSelection} beats ${playerSelection}!</h3>`
+        results.innerHTML = `<h3 style="color:#0DCEDA">${computerSelection}&nbsp</h3> <h3> beats</h3> <h3 style="color:#F73859">&nbsp${playerSelection}!</h3?>`
         computerScore.innerHTML++
 
 
@@ -46,7 +46,7 @@ function playRound(playerSelection) {
 
 
 function computerPlay() {
-    let computerOptions = ['rock', 'paper', 'scissors'];
+    let computerOptions = ['Rock', 'Paper', 'Scissors'];
     return computerOptions[Math.floor(Math.random() * computerOptions.length)];
 }
 

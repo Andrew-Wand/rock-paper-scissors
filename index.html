@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Rock Paper Scissors Game</title>
 </head>
 
 <body>
@@ -14,9 +15,12 @@
     </div>
 
     <div class="buttons-section">
-        <input type="button" value="rock" id="buttons"></input>
-        <input type="button" value="paper" id="buttons"></input>
-        <input type="button" value="scissors" id="buttons"></input>
+        <input type="button" value="Rock" id="buttons"></input>
+        <input type="button" value="Paper" id="buttons"></input>
+        <input type="button" value="Scissors" id="buttons"></input>
+    </div>
+
+    <div class="restart-section">
         <button class="restartGame" id="restartGame">Restart</button>
     </div>
 
@@ -25,10 +29,10 @@
     </div>
 
     <div class="score-section">
-        <div>Player Score:</div>
-        <div id="playerScore">0</div>
-        <div>Computer Score:</div>
-        <div id="computerScore">0</div>
+        <div class="score playerColor">Player Score:</div>
+        <div id="playerScore" class="score">0</div>
+        <div class="score computerColor">Computer Score:</div>
+        <div id="computerScore" class="score">0</div>
     </div>
 
 
